@@ -13,14 +13,21 @@ loginButton.addEventListener('click', (e) => {
 	}
 
 	api.login(login_url, user_data)
-	.then(data => console.log(data))
+	.then(data => {
+		if (data['message'] === 'sorry username and password dont match, please login with valid credentials') {
+			window.location.href = 'index.html';
+			// console.log(data);
+		} else if (data['message'] === `Sorry user ${user.value} doesnot exist, login with valid credentials`) {
+			window.location.href = 'index.html';
+			// console.log(data);
+		} else if (user.value === 'admin' && passwrd.value === '123') {
+			window.location.href = 'admin.html';
+			console.log(data);
+		} else {
+			window.location.href = 'home.html';
+			// console.log(data);
+		}
+	})
 	.catch( error => console.log(error));
-
-	// if (user.value === 'admin' && passwrd.value === '123') {
-	// 	window.location.href = 'admin.html';
-	// } else {
-	// 	window.location.href = 'home.html';
-	// }
-
 	e.preventDefault();
 });
