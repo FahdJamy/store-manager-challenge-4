@@ -4,6 +4,7 @@ var login_url = 'https://store-manager-challenge-3.herokuapp.com/api/v2/auth/log
 const user = document.getElementById('username');
 const passwrd = document.getElementById('pass');
 const loginButton = document.getElementById('loginBtn');
+const msgBody = document.getElementById('invalid')
 
 
 loginButton.addEventListener('click', (e) => {
@@ -14,26 +15,29 @@ loginButton.addEventListener('click', (e) => {
 
 	api.login(login_url, user_data)
 	.then(data => {
+		const user_name = (user.value)
+		username = (user_name.charAt(0).toUpperCase() + user_name.slice(1));
+		console.log(username)
 		if (data['message'] === 'sorry username and password dont match, please login with valid credentials') {
-			// console.log(data);
-		} else if (data['message'] === `Sorry user ${user.value} doesnot exist, login with valid credentials`) {
-			// console.log(data);
+			msgBody.innerHTML = `${data['message']}`
+		} else if (data['message'] === `Sorry user ${username} doesnot exist, login with valid credentials`) {
+			msgBody.innerHTML = 'You tried to login with a username that doesnot exist, login with valid credentials'
 		} else if (user.value === 'admin' && passwrd.value === '123') {
 			token = data['token']
-			username = user.value;
 			localStorage.setItem('token',token);
 			localStorage.setItem('username',username);
 			window.location.href = 'admin.html';
-			// console.log(data);
 		} else {
 			token = data['token']
-			username = user.value;
 			localStorage.setItem('token',token);
 			localStorage.setItem('username',username);
 			window.location.href = 'home.html';
 			// console.log(data);
 		}
 	})
-	.catch( error => console.log(error));
+	.catch( error => {
+		console.log(error)
+		msgBody.innerHTML = 'sorry we having problems now, please try again later'
+	});
 	e.preventDefault();
 });
