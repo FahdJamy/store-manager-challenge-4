@@ -18,7 +18,10 @@ loginButton.addEventListener('click', (e) => {
 		const user_name = (user.value)
 		username = (user_name.charAt(0).toUpperCase() + user_name.slice(1));
 		console.log(username)
-		if (data['message'] === 'sorry username and password dont match, please login with valid credentials') {
+		if (user.value === "" || passwrd.value === "") {
+			msgBody.innerHTML = 'username and password shouldnt be empty';
+		}
+		else if (data['message'] === 'sorry username and password dont match, please login with valid credentials') {
 			msgBody.innerHTML = `${data['message']}`
 		} else if (data['message'] === `Sorry user ${username} doesnot exist, login with valid credentials`) {
 			msgBody.innerHTML = 'You tried to login with a username that doesnot exist, login with valid credentials'
