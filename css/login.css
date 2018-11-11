@@ -54,3 +54,10 @@ body {
 	font-size: 1.5rem;
 	font-weight: 300;
 }
+.success_txt {
+	grid-column: 1/-1;
+	color: green;
+	justify-self: center;
+	font-size: 1.5rem;
+	font-weight: 300;
+}
