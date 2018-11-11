@@ -14,7 +14,7 @@ signupButton.addEventListener('click', (e) => {
 		msgBody.innerHTML = 'sorry all fields must be filled in';
 	} else if (confirm_password.value !== passcode.value) {
 		msgBody.innerHTML = 'password and confirm password must be equal';
-	} else if ((passcode.value < 5).length || (user_phone_no.value).length < 5) {
+	} else if ((passcode.value).length < 5 || (user_phone_no.value).length < 5) {
 		msgBody.innerHTML = 'both phone Nummber and password should atleast be 6 charcters more';
 	} else if ((new_username.value).length < 3) {
 		msgBody.innerHTML = 'username should be atleast 3 characters';
