@@ -101,7 +101,7 @@
 	<div class="modal" id="update_modal">
 		<div class="modal-content">
 			<span id="closure">&times;</span>
-			<h2>Update timberland info</h2>
+			<h2>Update product info</h2>
 			<form action="#" class="form_rec">
 				<label class="labels" for="product">Description</label>
 				<input class="input_values" type="text" id="product" placeholder="Description" required>
@@ -121,15 +121,16 @@
 			<span id="closeModalAdd" class="closeAddModal">&times;</span>
 			<h2>Create new product</h2>
 			<form action="#" class="form_rec">
-				<label class="labels" for="product">Product Name</label>
-				<input class="input_values" type="text" id="product" placeholder="Product Name" required>
-				<label class="labels" for="category">Price</label>
-				<input class="input_values" type="text" id="category" placeholder="Price" required>
-				<label class="labels" for="qnty">Quantity available</label>
-				<input class="input_values" type="number" id="qnty" placeholder="Quantity available" required>
-				<label class="labels" for="qnty">Category</label>
-				<input class="input_values" type="number" id="qnty" placeholder="Category" required>
-				<button class="btn btnAdd">Create new product</button>
+				<div class="message" id="message">Weed</div>
+				<label class="labels" for="c_product">Product Name</label>
+				<input class="input_values" type="text" id="c_product" placeholder="Product Name" required>
+				<label class="labels" for="p_price">Price</label>
+				<input class="input_values" type="text" id="p_price" placeholder="Price" required>
+				<label class="labels" for="stock">Quantity available</label>
+				<input class="input_values" type="number" id="stock" placeholder="Quantity available" required>
+				<label class="labels" for="categoryName">Category</label>
+				<input class="input_values" type="number" id="categoryName" placeholder="Category" required>
+				<button class="btn btnAdd" id="createPdt">Create new product</button>
 			</form>
 		</div>
 	</div>

@@ -19,6 +19,20 @@
 	justify-items: center;
 	align-items: center;
 }
+.message {
+	grid-column: 1/-1;
+	color: red;
+	justify-self: center;
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.successMsg {
+	grid-column: 1/-1;
+	color: green;
+	justify-self: center;
+	font-size: 1.2rem;
+	font-weight: 500;
+}
 .record	{
 	justify-self: center;
 	padding: 1rem;
