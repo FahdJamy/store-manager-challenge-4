@@ -8,3 +8,8 @@ const category = document.getElementById('categoryName');
 
 const sndButton = document.getElementById('createPdt');
 const msgBody = document.getElementById('message')
+
+sndButton.addEventListener('click', (e) => {
+	console.log('ready')
+	e.preventDefault();
+})
