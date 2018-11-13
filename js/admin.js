@@ -53,3 +53,17 @@ function outSideClose(e) {
 		addModal.style.display = "none";
 	}
 }
+
+// Get all products
+const get_products = "https://store-manager-challenge-3.herokuapp.com/api/v2/products"
+const container = document.getElementById('adminProducts')
+
+api.get(get_products)
+	.then((data) => {
+		const products = data['Products']
+		console.log(products)
+		for (var i = 0; i < products.length; i++) {
+			console.log(products[i])
+		}
+	})
+	.catch((err) => console.log(err))
