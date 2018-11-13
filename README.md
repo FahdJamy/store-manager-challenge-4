@@ -35,6 +35,7 @@
 - JavaScript (Fetch and es6)
 - HTML (HTML5)
 - CSS
+- JsPrettier linting library for formatting code
 
 ## Acknowledgement
 
