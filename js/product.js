@@ -45,15 +45,26 @@ sndButton.addEventListener("click", e => {
 	api.post(create_product_url, productInfo, token)
 		.then(data => {
 			console.log(data);
-			if (data["message"] === `category name ${category_name} doesnot exist`) {
+			if (
+				data["message"] ===
+				`category name ${category_name} doesnot exist`
+			) {
 				msgBody.innerHTML = `${data["message"]}`;
 				msgBody.className = "message";
-			} else if (data["message"] === `sorry product with name ${productName} already exists`) {
+			} else if (
+				data["message"] ===
+				`sorry product with name ${productName} already exists`
+			) {
 				msgBody.innerHTML = `${data["message"]}`;
-			} else if (data["message"] === "sorry product name shouldnt have a special character including ($#@%)") {
+			} else if (
+				data["message"] ===
+				"sorry product name shouldnt have a special character including ($#@%)"
+			) {
 				msgBody.innerHTML = `${data["message"]}`;
 				msgBody.className = "message";
-			} else if (data["message"] === `product has been created successfully!!!`) {
+			} else if (
+				data["message"] === `product has been created successfully!!!`
+			) {
 				msgBody.innerHTML = `${data["message"]}`;
 				msgBody.className = "successMsg";
 			} else if (
