@@ -75,6 +75,11 @@ sndButton.addEventListener("click", e => {
 				localStorage.removeItem("username");
 				window.location.href = "index.html";
 				alert("Log in as an admin first");
+			} else if (data['message'] === "sorry, You provided an invalid token") {
+				localStorage.removeItem("token");
+				localStorage.removeItem("username");
+				window.location.href = "index.html";
+				alert("Log in as an admin first");
 			}
 		})
 		.catch(error => {

@@ -1,23 +1,7 @@
 let closBtn = document.getElementById("closure");
-let openBtn = document.getElementById("updateBtn");
-let openBtn2 = document.getElementById("updateBtn2");
-let openBtn3 = document.getElementById("updateBtn3");
-let openBtn4 = document.getElementById("updateBtn4");
-let openBtn5 = document.getElementById("updateBtn5");
-let openBtn6 = document.getElementById("updateBtn6");
-let openBtn7 = document.getElementById("updateBtn7");
-let openBtn8 = document.getElementById("updateBtn8");
 let modalOpen = document.getElementById("update_modal");
 
 closBtn.addEventListener("click", closeWindow);
-openBtn.addEventListener("click", openWindow);
-openBtn2.addEventListener("click", openWindow);
-openBtn3.addEventListener("click", openWindow);
-openBtn4.addEventListener("click", openWindow);
-openBtn5.addEventListener("click", openWindow);
-openBtn6.addEventListener("click", openWindow);
-openBtn7.addEventListener("click", openWindow);
-openBtn8.addEventListener("click", openWindow);
 window.addEventListener("click", outSideClose);
 
 //// Close modal view on click of "x" close btn ////
@@ -55,15 +39,44 @@ function outSideClose(e) {
 }
 
 // Get all products
-const get_products = "https://store-manager-challenge-3.herokuapp.com/api/v2/products"
-const container = document.getElementById('adminProducts')
+const get_products =
+	"https://store-manager-challenge-3.herokuapp.com/api/v2/products";
+const container = document.getElementById("adminProducts");
+
+container.addEventListener('click', (e) => {
+	if (e.target.classList.contains('updateBtn')) {
+		console.log('working');
+		modalOpen.style.display = "block";
+	}
+});
 
 api.get(get_products)
-	.then((data) => {
-		const products = data['Products']
-		console.log(products)
+	.then(data => {
+		const products = data["Products"];
+		console.log(products);
 		for (var i = 0; i < products.length; i++) {
-			console.log(products[i])
+			var pdtId = products[i]["id"];
+			var pdtName = products[i]["product_name"];
+			var pdtCategory = products[i]["category"];
+			var pdtPrice = products[i]["price"];
+			var pdtQuantuty = products[i]["stock"];
+			console.log(pdtId);
+			console.log(pdtName);
+			console.log(pdtCategory);
+			console.log(pdtPrice);
+			console.log(pdtQuantuty);
+			console.log(products[i]);
+
+			container.innerHTML += `<div class="product">
+					<img src="img/productImage.png" alt="alt_name" class="pdt_img">
+					<h5 class="pdt_name">${pdtName}</h5>
+					<p>${pdtQuantuty} units peices in stock</p>
+					<div class="actions">
+						<button class="btn updateBtn" id="${pdtId}">Update product details</button>
+						<button class="btn btnDel">Delete</button>
+					</div>
+				</div>`;
 		}
 	})
-	.catch((err) => console.log(err))
+	.catch(err => console.log(err));
+
