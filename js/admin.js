@@ -45,7 +45,6 @@ const container = document.getElementById("adminProducts");
 
 container.addEventListener('click', (e) => {
 	if (e.target.classList.contains('updateBtn')) {
-		console.log('working');
 		modalOpen.style.display = "block";
 	}
 });
@@ -60,12 +59,6 @@ api.get(get_products)
 			var pdtCategory = products[i]["category"];
 			var pdtPrice = products[i]["price"];
 			var pdtQuantuty = products[i]["stock"];
-			console.log(pdtId);
-			console.log(pdtName);
-			console.log(pdtCategory);
-			console.log(pdtPrice);
-			console.log(pdtQuantuty);
-			console.log(products[i]);
 
 			container.innerHTML += `<div class="product">
 					<img src="img/productImage.png" alt="alt_name" class="pdt_img">
