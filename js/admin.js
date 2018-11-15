@@ -60,7 +60,7 @@ api.get(get_products)
 					<p>${pdtQuantuty} units peices in stock at ${pdtPrice} each</p>
 					<div class="actions">
 						<button class="btn updateBtn" id="${pdtId}">Update product details</button>
-						<button class="btn btnDel">Delete</button>
+						<button class="btn btnDel" id="${pdtId}">Delete</button>
 					</div>
 				</div>`;
 		}
@@ -70,12 +70,18 @@ api.get(get_products)
 // Update product information
 var productId;
 container.addEventListener("click", e => {
+	// if update button is clicked
 	if (e.target.classList.contains("updateBtn")) {
 		modalOpen.style.display = "block";
 		productId = e.target.attributes.getNamedItem("id").value;
 		console.log(productId);
 		var updateButton = document.getElementById("updatePdt");
 		updateButton.addEventListener("click", updateProductInfo);
+	}
+	// if delete button is clicked
+	if (e.target.classList.contains("btnDel")) {
+		productId = e.target.attributes.getNamedItem("id").value;
+		console.log(productId);
 	}
 	e.preventDefault();
 });
