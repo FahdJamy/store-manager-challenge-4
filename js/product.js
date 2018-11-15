@@ -21,7 +21,6 @@ sndButton.addEventListener("click", e => {
 	var category_name = String(
 		category.value.charAt(0).toUpperCase() + category.value.slice(1)
 	);
-	console.log("ready");
 	var productInfo = {
 		name: productName,
 		category: category_name,
@@ -44,7 +43,6 @@ sndButton.addEventListener("click", e => {
 	}
 	api.post(create_product_url, productInfo, token)
 		.then(data => {
-			console.log(data);
 			if (
 				data["message"] ===
 				`category name ${category_name} doesnot exist`
@@ -83,7 +81,6 @@ sndButton.addEventListener("click", e => {
 			}
 		})
 		.catch(error => {
-			console.log(error);
 			msgBody.innerHTML =
 				"sorry we having problems now, please try again later";
 			msgBody.className = "message";

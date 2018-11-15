@@ -46,7 +46,6 @@ const container = document.getElementById("adminProducts");
 api.get(get_products)
 	.then(data => {
 		const products = data["Products"];
-		console.log(products);
 		for (var i = 0; i < products.length; i++) {
 			var pdtId = products[i]["id"];
 			var pdtName = products[i]["product_name"];
@@ -112,7 +111,6 @@ container.addEventListener("click", e => {
 					console.log(error);
 				});
 		}
-		console.log(productId);
 	}
 	e.preventDefault();
 });
@@ -125,7 +123,6 @@ function updateProductInfo(e) {
 	let newPdtStock = document.getElementById("newStock").value;
 	var newPdtCatedory = document.getElementById("newCat").value;
 	if (newPdtPrice === "") {
-		console.log("Price is none");
 		newPdtPrice = 0;
 	}
 	if (newPdtStock === "") {
@@ -175,7 +172,6 @@ function updateProductInfo(e) {
 				window.location.href = "index.html";
 				alert("Log in as an admin first");
 			}
-			console.log(response);
 		})
 		.catch(error => {
 			console.log(error);
