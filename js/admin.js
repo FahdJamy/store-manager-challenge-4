@@ -81,6 +81,9 @@ container.addEventListener("click", e => {
 	// if delete button is clicked
 	if (e.target.classList.contains("btnDel")) {
 		productId = e.target.attributes.getNamedItem("id").value;
+		if (confirm('Are sure you want to delete this product?')) {
+			console.log('we')
+		}
 		console.log(productId);
 	}
 	e.preventDefault();
