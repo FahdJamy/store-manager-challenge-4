@@ -12,7 +12,6 @@ function closeWindow() {
 function openWindow() {
 	modalOpen.style.display = "block";
 }
-
 // Add product
 let addBtn = document.getElementById("create_pdt");
 let addModal = document.getElementById("add_modal");
@@ -43,12 +42,7 @@ const get_products =
 	"https://store-manager-challenge-3.herokuapp.com/api/v2/products";
 const container = document.getElementById("adminProducts");
 
-container.addEventListener('click', (e) => {
-	if (e.target.classList.contains('updateBtn')) {
-		modalOpen.style.display = "block";
-	}
-});
-
+// Get all products available
 api.get(get_products)
 	.then(data => {
 		const products = data["Products"];
@@ -63,7 +57,7 @@ api.get(get_products)
 			container.innerHTML += `<div class="product">
 					<img src="img/productImage.png" alt="alt_name" class="pdt_img">
 					<h5 class="pdt_name">${pdtName}</h5>
-					<p>${pdtQuantuty} units peices in stock</p>
+					<p>${pdtQuantuty} units peices in stock at ${pdtPrice} each</p>
 					<div class="actions">
 						<button class="btn updateBtn" id="${pdtId}">Update product details</button>
 						<button class="btn btnDel">Delete</button>
@@ -72,4 +66,60 @@ api.get(get_products)
 		}
 	})
 	.catch(err => console.log(err));
+
+
+// Update product information
+var productId;
+container.addEventListener('click', (e) => {
+	if (e.target.classList.contains('updateBtn')) {
+		modalOpen.style.display = "block";
+		productId = e.target.attributes.getNamedItem("id").value
+		console.log(productId);
+		var updateButton = document.getElementById('updatePdt');
+		updateButton.addEventListener('click', updateProductInfo)
+
+	}
+	e.preventDefault();
+});
+
+const msgHolder = document.getElementById('msgH')
+// Update product function
+function updateProductInfo(e) {
+	var newPdtName = document.getElementById('newName').value;
+	let newPdtPrice = document.getElementById('newPrice').value;
+	let newPdtStock = document.getElementById('newStock').value;
+	var newPdtCatedory = document.getElementById('newCat').value;
+	if (newPdtPrice === "") {
+		console.log('Price is none')
+		newPdtPrice = 0
+	}
+	if (newPdtStock === "") {
+		newPdtStock = 0
+	}
+	if (newPdtName === "" && newPdtStock === 0 && newPdtPrice === 0 && newPdtCatedory === "") {
+		msgHolder.innerHTML = `sorry you cannot update product info with out atleast a field filled in`;
+	}
+	const data = `https://store-manager-challenge-3.herokuapp.com/api/v2/products/${productId}`
+	var newPdtInfo = {
+		name: String(newPdtName),
+		price: parseInt(newPdtPrice),
+		quantity: parseInt(newPdtStock),
+		category: String(newPdtCatedory)
+	}
+	api.update(data, newPdtInfo, token)
+		.then((response) => {
+			if (response['message'] === 'product info successfully updated') {
+				msgHolder.innerHTML = `${response['message']}`;
+			} else if (response['message'] === 'sorry you cant update a product info with a category that doesnot exist') {
+				msgHolder.innerHTML = `${response['message']}`;
+			} else if (response['message'] === "sorry product name already exist") {
+				msgHolder.innerHTML = `sorry that ${response['message']}`;
+			}
+			console.log(response)
+		})
+		.catch(error => {
+			console.log(error)
+		})
+	e.preventDefault();
+}
 

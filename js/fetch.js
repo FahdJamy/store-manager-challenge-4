@@ -46,16 +46,16 @@ class API {
 	}
 	// Method for put.
 	async update (url, data, userToken) {
-		const result = await fetch (url, {
-			method : 'PUT',
-			headers : {
-				'Content-type' : 'application/json',
-				'token_key': userToken
+		const resp = await fetch (url, {
+			method: 'PUT',
+			headers: {
+				'content-Type': 'application/json',
+				'token_key': `${userToken}`
 			},
-			body : JSON.stringify(data)
+			body: JSON.stringify(data)
 		});
-		const responseData = await result.json();
-		return responseData;
+		const response = await resp.json()
+		return response
 	}
 	// Method for delete
 	async delete (url, userToken) {
