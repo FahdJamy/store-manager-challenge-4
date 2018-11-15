@@ -81,8 +81,36 @@ container.addEventListener("click", e => {
 	// if delete button is clicked
 	if (e.target.classList.contains("btnDel")) {
 		productId = e.target.attributes.getNamedItem("id").value;
-		if (confirm('Are sure you want to delete this product?')) {
-			console.log('we')
+		if (confirm("Are sure you want to delete this product?")) {
+			delete_url = `https://store-manager-challenge-3.herokuapp.com/api/v2/products/${productId}`;
+			api.delete(delete_url, token)
+				.then(response => {
+					if (
+						response["message"] ===
+						"sorry u not an admin, u cant access this endpoint"
+					) {
+						localStorage.removeItem("token");
+						localStorage.removeItem("username");
+						window.location.href = "index.html";
+						alert("Log in as an admin first");
+					} else if (
+						response["message"] ===
+						"sorry, You provided an invalid token"
+					) {
+						localStorage.removeItem("token");
+						localStorage.removeItem("username");
+						window.location.href = "index.html";
+						alert("Log in as an admin first");
+					} else if (
+						response["message"] ===
+						`product with Id ${productId} has been deleted`
+					) {
+						alert("product has been deleted");
+					}
+				})
+				.catch(error => {
+					console.log(error);
+				});
 		}
 		console.log(productId);
 	}
