@@ -41,7 +41,7 @@ function getProductDetails(e) {
 				var pdtCategory = pdtInfo["category"];
 				var pdtPrice = pdtInfo["price"];
 				var pdtQuantuty = pdtInfo["stock"];
-				details.innerHTML += `
+				details.innerHTML = `
 					<h2>${pdtName}</h2>
 					<p>${pdtName} is in belogs to the ${pdtCategory} category</p>
 					<p>Stock left is ${pdtQuantuty} pieces</p>
