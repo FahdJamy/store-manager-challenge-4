@@ -1,44 +1,41 @@
-var closBtn = document.getElementById('closure');
-var recordBtn = document.getElementById('recordBtn');
-var modalOpen = document.getElementById('modal');
+const api = new API();
+var closBtn = document.getElementById("closure");
+var recordBtn = document.getElementById("recordBtn");
+var modalOpen = document.getElementById("modal");
+var token = localStorage.getItem("token");
+var sales_url = "https://store-manager-challenge-3.herokuapp.com/api/v2/sales";
 
-closBtn.addEventListener('click', closeWindow);
-recordBtn.addEventListener('click', openWindow);
-window.addEventListener('click', outSideClose);
+closBtn.addEventListener("click", closeWindow);
+recordBtn.addEventListener("click", openWindow);
+window.addEventListener("click", outSideClose);
 
 //// Close modal view on click of "x" close btn ////
-function closeWindow () {
-	modalOpen.style.display = 'none';
+function closeWindow() {
+	modalOpen.style.display = "none";
 }
 //// Open modal view on click of "View detail" btn ////
-function openWindow () {
-	modalOpen.style.display = 'block';
+function openWindow() {
+	modalOpen.style.display = "block";
 }
 //// Close modal view on outside click of modal view ////
-function outSideClose (e) {
+function outSideClose(e) {
 	if (e.target === modalOpen) {
-		modalOpen.style.display = 'none';
+		modalOpen.style.display = "none";
 	}
 }
 
-const api = new API;
-var token = localStorage.getItem("token");
-var sales_url = 'https://store-manager-challenge-3.herokuapp.com/api/v2/sales'
-
-
 api.get_token(sales_url, token)
 	.then(data => {
-		const salesContainer = document.getElementById('salesRecs')
-		var salesRecords = data['sales'];
+		const salesContainer = document.getElementById("salesRecs");
+		var salesRecords = data["sales"];
 		for (var i = 0; i < salesRecords.length; i++) {
-
-			var catName = salesRecords[i]['category'];
-			var createdBy = salesRecords[i]['created_by'];
-			var dateOn = salesRecords[i]['created_on'];
-			var pdtPrice = salesRecords[i]['price'];
-			var pdtName = salesRecords[i]['product_name'];
-			var qnty = salesRecords[i]['quantity'];
-			var revenue = salesRecords[i]['total_amount'];
+			var catName = salesRecords[i]["category"];
+			var createdBy = salesRecords[i]["created_by"];
+			var dateOn = salesRecords[i]["created_on"];
+			var pdtPrice = salesRecords[i]["price"];
+			var pdtName = salesRecords[i]["product_name"];
+			var qnty = salesRecords[i]["quantity"];
+			var revenue = salesRecords[i]["total_amount"];
 			salesContainer.innerHTML += `<div class="record">
 					<img src="img/timber.jpg" alt="alt_name" class="item_img">
 					<div class="rec">
@@ -63,4 +60,4 @@ api.get_token(sales_url, token)
 				</div>`;
 		}
 	})
-	.catch((error) => console.log(error))
+	.catch(error => console.log(error));
