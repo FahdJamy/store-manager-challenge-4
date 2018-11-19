@@ -29,7 +29,7 @@
 	grid-column: 1/-1;
 	align-self: center;
 	justify-self: center;
-	color: red;
+	color: green;
 }
 .message {
 	grid-column: 1/-1;
