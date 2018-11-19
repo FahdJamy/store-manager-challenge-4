@@ -7,8 +7,8 @@
 
 }
 .btn_record {
+	margin-left: 40vw;
 	margin-top: 3rem;
-	justify-self: center;
 	border-radius: .5rem;
 	margin-right: 10rem;
 }
