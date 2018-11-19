@@ -19,6 +19,18 @@
 	justify-items: center;
 	align-items: center;
 }
+.msgInfo {
+	grid-column: 1/-1;
+	align-self: center;
+	justify-self: center;
+	color: red;
+}
+.msgInfoSuccess {
+	grid-column: 1/-1;
+	align-self: center;
+	justify-self: center;
+	color: red;
+}
 .message {
 	grid-column: 1/-1;
 	color: red;

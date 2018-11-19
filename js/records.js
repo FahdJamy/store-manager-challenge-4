@@ -5,9 +5,12 @@ var modalOpen = document.getElementById("modal");
 var token = localStorage.getItem("token");
 var sales_url = "https://store-manager-challenge-3.herokuapp.com/api/v2/sales";
 
+var createSaleRec = document.getElementById('createSaleBtn');
+
 closBtn.addEventListener("click", closeWindow);
 recordBtn.addEventListener("click", openWindow);
 window.addEventListener("click", outSideClose);
+createSaleRec.addEventListener('click', createSalesRecord);
 
 //// Close modal view on click of "x" close btn ////
 function closeWindow() {
@@ -24,6 +27,7 @@ function outSideClose(e) {
 	}
 }
 
+////// Get all available sale records
 api.get_token(sales_url, token)
 	.then(data => {
 		const salesContainer = document.getElementById("salesRecs");
@@ -61,3 +65,16 @@ api.get_token(sales_url, token)
 		}
 	})
 	.catch(error => console.log(error));
+
+
+///// Create new sales record
+function createSalesRecord (e) {
+	var product = document.getElementById('product').value;
+	var quantitySold = document.getElementById('qnty').value;
+	var messagee = document.getElementById('mesg');
+	if (product === "" && quantitySold === "") {
+		messagee.innerHTML = `Sorry, all fields are required.`;
+		messagee.className = 'msgInfo';
+	}
+	e.preventDefault();
+};
