@@ -73,7 +73,6 @@ container.addEventListener("click", e => {
 	if (e.target.classList.contains("updateBtn")) {
 		modalOpen.style.display = "block";
 		productId = e.target.attributes.getNamedItem("id").value;
-		console.log(productId);
 		var updateButton = document.getElementById("updatePdt");
 		updateButton.addEventListener("click", updateProductInfo);
 	}
@@ -122,12 +121,20 @@ function updateProductInfo(e) {
 	let newPdtPrice = document.getElementById("newPrice").value;
 	let newPdtStock = document.getElementById("newStock").value;
 	var newPdtCatedory = document.getElementById("newCat").value;
+	const data = `https://store-manager-challenge-3.herokuapp.com/api/v2/products/${productId}`;
 	if (newPdtPrice === "") {
 		newPdtPrice = 0;
 	}
 	if (newPdtStock === "") {
 		newPdtStock = 0;
 	}
+
+	var newPdtInfo = {
+		name: String(newPdtName),
+		price: parseInt(newPdtPrice),
+		quantity: parseInt(newPdtStock),
+		category: String(newPdtCatedory)
+	};
 	if (
 		newPdtName === "" &&
 		newPdtStock === 0 &&
@@ -135,46 +142,42 @@ function updateProductInfo(e) {
 		newPdtCatedory === ""
 	) {
 		msgHolder.innerHTML = `sorry you cannot update product info with out atleast a field filled in`;
-	}
-	const data = `https://store-manager-challenge-3.herokuapp.com/api/v2/products/${productId}`;
-	var newPdtInfo = {
-		name: String(newPdtName),
-		price: parseInt(newPdtPrice),
-		quantity: parseInt(newPdtStock),
-		category: String(newPdtCatedory)
-	};
-	api.update(data, newPdtInfo, token)
-		.then(response => {
-			if (response["message"] === "product info successfully updated") {
-				msgHolder.innerHTML = `${response["message"]}`;
-			} else if (
-				response["message"] ===
-				"sorry you cant update a product info with a category that doesnot exist"
-			) {
-				msgHolder.innerHTML = `${response["message"]}`;
-			} else if (
-				response["message"] === "sorry product name already exist"
-			) {
-				msgHolder.innerHTML = `sorry that ${response["message"]}`;
-			} else if (
-				response["message"] ===
-				"sorry u not an admin, u cant access this endpoint"
-			) {
-				localStorage.removeItem("token");
-				localStorage.removeItem("username");
-				window.location.href = "index.html";
-				alert("Log in as an admin first");
-			} else if (
-				response["message"] === "sorry, You provided an invalid token"
-			) {
-				localStorage.removeItem("token");
-				localStorage.removeItem("username");
-				window.location.href = "index.html";
-				alert("Log in as an admin first");
-			}
-		})
-		.catch(error => {
-			console.log(error);
-		});
+	} else
+		api.update(data, newPdtInfo, token)
+			.then(response => {
+				if (
+					response["message"] === "product info successfully updated"
+				) {
+					msgHolder.innerHTML = `${response["message"]}`;
+				} else if (
+					response["message"] ===
+					"sorry you cant update a product info with a category that doesnot exist"
+				) {
+					msgHolder.innerHTML = `${response["message"]}`;
+				} else if (
+					response["message"] === "sorry product name already exist"
+				) {
+					msgHolder.innerHTML = `sorry that ${response["message"]}`;
+				} else if (
+					response["message"] ===
+					"sorry u not an admin, u cant access this endpoint"
+				) {
+					localStorage.removeItem("token");
+					localStorage.removeItem("username");
+					window.location.href = "index.html";
+					alert("Log in as an admin first");
+				} else if (
+					response["message"] ===
+					"sorry, You provided an invalid token"
+				) {
+					localStorage.removeItem("token");
+					localStorage.removeItem("username");
+					window.location.href = "index.html";
+					alert("Log in as an admin first");
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	e.preventDefault();
 }
