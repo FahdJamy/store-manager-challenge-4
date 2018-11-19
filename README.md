@@ -2,6 +2,8 @@
 
 #### A store manager is an application that helps store owners (admins) track their stock inventory
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 ## Project
 
 - Checkout a live demo of the application on this link : https://fahdjamy.github.io/store-manager-challenge-4/
