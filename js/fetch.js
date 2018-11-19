@@ -5,20 +5,18 @@ class API {
 		const responseData = await result.json();
 		return responseData;
 	}
-	// Mmethod for get. <token_required>
+	// Method for get. <token_required>
 	async get_token (url, userToken) {
 		const result = await fetch(url,{
-			method : 'POST',
+			method : 'GET',
 			headers : {
-				'Content-type' : 'application/json',
 				'token_key': `${userToken}`
-			},
-			body : JSON.stringify(data)
+			}
 		});
 		const responseData = await result.json();
 		return responseData;
 	}
-	// Mmethod for post
+	// Method for post
 	async login (url, data) {
 		const result = await fetch (url, {
 			method : 'POST',

@@ -20,3 +20,12 @@ function outSideClose (e) {
 		modalOpen.style.display = 'none';
 	}
 }
+
+const api = new API;
+var token = localStorage.getItem("token");
+var sales_url = 'https://store-manager-challenge-3.herokuapp.com/api/v2/sales'
+var salesContainer = document.getElementById('records')
+
+api.get_token(sales_url, token)
+	.then(data => console.log(data))
+	.catch((error) => console.log(error))
