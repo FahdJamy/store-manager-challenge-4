@@ -15,7 +15,7 @@
 	float: right;
 	color: #fff;
 	margin: 1rem 1rem;
-	font-size: 1.7rem;
+	font-size: 1.9rem;
 }
 #closeModalAdd:hover,
 #closeModalAdd:focus {
@@ -24,7 +24,7 @@
 }
 .product p {
 	text-align: center;
-	font-size: 1.3rem;
+	font-size: 1.6rem;
 }
 .actions {
 	display: grid;

@@ -13,7 +13,7 @@ body {
 	font-family: Quicksand, Helvetica, sans-serif;
 	font-weight: 300;
 	line-height: 1.5;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	
 	background-color: #011816;
 	/* background-image: linear-gradient(rgba(0,0,0, .89) , rgba(0,0,0, .98)) , url(../img/store_4.jpg); */
@@ -48,7 +48,7 @@ body {
  	border-radius: .2rem;
  	background-color: rgb(80, 104, 241);
  	cursor: pointer;
- 	font-size: 1.5rem;
+ 	font-size: 1.7rem;
 	transition: all .3s;
 	color: #fff;
 }
