@@ -17,6 +17,11 @@
 	margin: 1rem 1rem;
 	font-size: 1.9rem;
 }
+@media screen and (max-width: 600px) {
+	#closeModalAdd {
+		font-size: 1.3rem;
+	}
+}
 #closeModalAdd:hover,
 #closeModalAdd:focus {
 	color: #f9f9f9;
@@ -25,6 +30,11 @@
 .product p {
 	text-align: center;
 	font-size: 1.6rem;
+}
+@media screen and (max-width: 600px) {
+	.product p {
+		font-size: 1.3rem;
+	}
 }
 .actions {
 	display: grid;

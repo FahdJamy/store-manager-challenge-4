@@ -2,7 +2,6 @@
 	margin : 2rem 0;
 	grid-column: md-col-start 1/ md-col-start 8;
 	display: grid;
-	
 	grid-column-gap: 2rem;
 	grid-row-gap: 2rem;
 	color: #fff;
@@ -24,11 +23,12 @@
 	border: none;
 }
 .user_d {
-	background-color: #140020;
+	background-color: #066e2e;
 	box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 	border-radius: 2rem;
 	display: grid;
 	grid-template-columns: 20rem 1fr;
+	justify-content: center;
 	grid-column-gap: 2rem;
 	transition: all .2s;
 }
@@ -55,7 +55,7 @@
 }
 .user_details h5 {
 	font-weight: 500;
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 }
 .user_roles {
 	padding: 2rem;

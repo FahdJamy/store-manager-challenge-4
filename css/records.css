@@ -1,6 +1,5 @@
 .records {
 	grid-column: lft-start-col / ryt-end-col;
-
 	display: grid;
 	grid-template-rows: 5rem max-content;
 	grid-gap: 2rem;
@@ -54,9 +53,9 @@
 	justify-content: center;
 	grid-gap: 5rem;
 	color: #fff;
-	background-color: rgb(28, 41, 30);
+	background-color: rgb(5, 73, 15);
 	box-shadow: 0 1rem 2rem rgba(0,0,0, .5);
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	justify-content: end;
 }
 .rec h3 {

@@ -10,7 +10,6 @@
 	grid-column: lft-start-col / ryt-end-col;
 	background-color: #011816;
 	padding: 5rem;
-
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 	justify-items: center;
@@ -30,7 +29,7 @@
 	width: 100%;
 }
 .pdt_name {
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 	align-self: center;
 	justify-self: center;
 	padding: .5rem;
