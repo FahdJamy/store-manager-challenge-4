@@ -10,7 +10,8 @@
 
 ## Project
 
-- Checkout a live demo of the application on this link : https://fahdjamy.github.io/store-manager-challenge-4/
+- Checkout a live demo of the application on the github pages - link : https://fahdjamy.github.io/store-manager-challenge-4/
+- Or on heroku - link : https://store-manager-challenge-4.herokuapp.com/
 
 # Functionality
 
