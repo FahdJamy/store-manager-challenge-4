@@ -41,7 +41,8 @@ signupButton.addEventListener("click", e => {
 				) {
 					msgBody.innerHTML = `${data["message"]}`;
 				} else if (data["message"] === "User succefully registered") {
-					msgBody.innerHTML = "User account succefully created";
+					console.log(data);
+					msgBody.innerHTML = "User succefully registered";
 					msgBody.className = "success_txt";
 				}
 				console.log(data);
